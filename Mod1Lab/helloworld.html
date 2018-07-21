@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="currentDateApp">
 
 <head>
     <title>Angular Fundamentals</title>
@@ -7,10 +7,25 @@
         crossorigin="anonymous">
 </head>
 
-<body>
+<body ng-controller="firstController">
     <div class="container">
-        <h1>AngularFundamentals</h1>
+        <h1>Module 1 Homework</h1>
+        <h2>The Current Date is: {{currentDate}}</h2>
     </div>
+
+    <!-- Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+    <script type="text/javascript">
+        var currentDateApp = new angular.module("currentDateApp", []);
+        currentDateApp.constant("dateConfig", {date: new Date()});
+        currentDateApp.controller("firstController", [
+            "$scope", "dateConfig",
+            function ($scope, dateConfig) {
+                $scope.currentDate = dateConfig.date;
+            }
+        ]);
+    </script>
 </body>
 
 </html>
